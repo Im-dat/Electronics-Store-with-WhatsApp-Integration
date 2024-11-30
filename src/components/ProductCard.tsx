@@ -1,6 +1,7 @@
 import React from 'react';
 import { ShoppingCart } from 'lucide-react';
-import type { Product } from '../data/products';
+import type { Product } from '../config/store';
+import { storeConfig } from '../config/store';
 
 interface ProductCardProps {
   product: Product;
@@ -22,14 +23,14 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
         <p className="text-sm text-gray-600 mt-1">{product.description}</p>
         <div className="mt-4 flex items-center justify-between">
           <span className="text-xl font-bold text-gray-900">
-            ${product.price.toFixed(2)}
+            {storeConfig.currency} {product.price.toFixed(2)}
           </span>
           <button
             onClick={() => onAddToCart(product)}
             className="bg-indigo-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-indigo-700 transition-colors"
           >
             <ShoppingCart size={20} />
-            Add to Cart
+            Adicionar
           </button>
         </div>
       </div>
